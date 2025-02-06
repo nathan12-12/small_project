@@ -4,9 +4,7 @@ import java.awt.*;
 import javax.swing.UIManager.*;
 import javax.swing.*;
 import javax.swing.border.*;
-
 import java.awt.event.*;
-import java.util.*;
 
 public class main {
 	
@@ -171,15 +169,6 @@ public class main {
             	} else {
             		JOptionPane.showMessageDialog(frame, "Please select a theme and word length before playing.");
             	}
-                /*if (array != null && array.length > 0) {
-                    JFrame gameWindow = new JFrame("Game");
-                    gameWindow.setSize(400, 400);
-                    gameWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    gameWindow.setVisible(true);
-                    // Add game logic here
-                } else {
-                    JOptionPane.showMessageDialog(frame, "Please select a theme and word length before playing.");
-                } */
             }
         });
         contentPane.add(btnPlay);
