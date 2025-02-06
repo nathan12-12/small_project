@@ -12,7 +12,7 @@ public class main {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private String[] array;
-    private Map<String, String[]> wordMap = new HashMap<>();
+    private Map<String, String[]> wordMap = new HashMap<String, String[]>();
 	
 
 	/**
@@ -47,12 +47,20 @@ public class main {
 
 		frame.setContentPane(contentPane);
 		
+		// Initialize array
+		wordMap.put("bibleShort", new String[] {"word1","word2","word5"});
+		wordMap.put("bibleLong", new String[] {"word1","word2","word5"});
+		wordMap.put("foodShort", new String[] {"word1","word2","word5"});
+		wordMap.put("foodLong", new String[] {"word1","word2","word5"});
+		wordMap.put("sportShort", new String[] {"word1","word2","word5"});
+		wordMap.put("sportLong", new String[] {"word1","word2","word5"});
+		
 		JButton btnBible = new JButton("Bible");
 		btnBible.setFont(new Font("Lucida Grande", Font.PLAIN, 23));
 		btnBible.setBounds(49, 162, 183, 80);
 		btnBible.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//circle.show();
+				
 			}
 		});
 		contentPane.setLayout(null);
