@@ -1,8 +1,8 @@
 package hangman;
 
 import javax.swing.*;
+import java.awt.event.*;
 import javax.swing.UIManager.LookAndFeelInfo;
-
 import java.awt.*;
 import javax.swing.border.*;
 
@@ -11,6 +11,7 @@ public class playClass extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JLabel wordLabel;
+	private JTextField textGuess;
 
 	/**
 	 * Launch the application.
@@ -60,18 +61,26 @@ public class playClass extends JFrame {
 		wordLabel = new JLabel("Generated word will appear here");
         wordLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
         wordLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        wordLabel.setBounds(254, 100, 341, 33);
+        wordLabel.setBounds(241, 112, 341, 33);
         contentPane.add(wordLabel);
+        
+        textGuess = new JTextField();
+        textGuess.setHorizontalAlignment(SwingConstants.CENTER);
+        textGuess.setFont(new Font("Lucida Grande", Font.PLAIN, 19));
+        textGuess.setBounds(320, 238, 197, 68);
+        contentPane.add(textGuess);
+        textGuess.setColumns(10);
         }
-	// Method to update the word label	
+	
+	// Method to update the word label and set the limit characters for the text field
 	public void updateWordLabel(String word) {
 		wordLabel.setText(word);
+		int limit = word.length();
+		textGuess.addKeyListener(new KeyAdapter() {
+		    public void keyTyped(KeyEvent e) { 
+		        if (textGuess.getText().length() >= limit ) // limit text field to 3 characters
+		            e.consume(); 
+		    }  
+		});
 	}
-
-	/*public void paint(Graphics g){
-        g.drawOval(40, 40, 60, 60); //FOR CIRCLE
-        g.drawRect(80, 30, 200, 200); // FOR SQUARE
-        g.drawRect(200, 100, 100, 200); // FOR RECT
-   }
-   */
 }

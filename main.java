@@ -77,7 +77,7 @@ public class main {
 			public void actionPerformed(ActionEvent e) {
 				if (buttonSelect != null)
 		            buttonSelect.setBackground(null);
-		        btnBible.setBackground(Color.DARK_GRAY);
+		        btnBible.setBackground(Color.GRAY);
 		        buttonSelect = btnBible;
 				selected = WordGenerator.themes.BIBLE;
 			}
@@ -89,7 +89,7 @@ public class main {
 		theme.setHorizontalAlignment(SwingConstants.CENTER);
 		theme.setBounds(245, 38, 302, 94);
 		contentPane.add(theme);
-		theme.setForeground(new Color(4, 50, 255));
+		theme.setForeground(new Color(78, 143, 0));
 		theme.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 36));
 		
 		JButton btnFood = new JButton("Food");
@@ -100,7 +100,7 @@ public class main {
 			public void actionPerformed(ActionEvent e) {
 				if (buttonSelect != null)
 		            buttonSelect.setBackground(null);
-		        btnFood.setBackground(Color.DARK_GRAY);
+		        btnFood.setBackground(Color.GRAY);
 		        buttonSelect = btnFood;
 				selected = WordGenerator.themes.FOOD;
 			}
@@ -114,7 +114,7 @@ public class main {
 			public void actionPerformed(ActionEvent e) {
 				if (buttonSelect != null)
 		            buttonSelect.setBackground(null);
-		        btnSports.setBackground(Color.DARK_GRAY);
+		        btnSports.setBackground(Color.GRAY);
 		        buttonSelect = btnSports;
 				selected = WordGenerator.themes.SPORTS;
 			}
@@ -122,19 +122,19 @@ public class main {
 		
 		JLabel word_legnth = new JLabel("Choose Length of Word");
 		word_legnth.setHorizontalAlignment(SwingConstants.CENTER);
-		word_legnth.setForeground(new Color(4, 50, 255));
+		word_legnth.setForeground(new Color(0, 142, 0));
 		word_legnth.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 27));
 		word_legnth.setBounds(208, 254, 370, 94);
 		contentPane.add(word_legnth);
 		
 		JButton btnShort = new JButton("Short");
         btnShort.setFont(new Font("Lucida Grande", Font.PLAIN, 23));
-        btnShort.setBounds(124, 353, 183, 80);
+        btnShort.setBounds(178, 353, 183, 80);
         btnShort.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	if (buttonSelect2 != null)
 		            buttonSelect2.setBackground(null);
-		        btnShort.setBackground(Color.DARK_GRAY);
+		        btnShort.setBackground(Color.GRAY);
 		        buttonSelect2 = btnShort;
                 word = wg.newWord(selected, 0);
                 playFrame.updateWordLabel(word);
@@ -144,12 +144,12 @@ public class main {
         
         JButton btnLong = new JButton("Long");
         btnLong.setFont(new Font("Lucida Grande", Font.PLAIN, 23));
-        btnLong.setBounds(437, 353, 183, 80);
+        btnLong.setBounds(445, 353, 183, 80);
         btnLong.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	if (buttonSelect2 != null)
 		            buttonSelect2.setBackground(null);
-		        btnLong.setBackground(Color.DARK_GRAY);
+		        btnLong.setBackground(Color.GRAY);
 		        buttonSelect2 = btnLong;
             	word = wg.newWord(selected, 1);
             	playFrame.updateWordLabel(word);
@@ -159,7 +159,7 @@ public class main {
 		
 		JButton btnPlay = new JButton("Play");
 		btnPlay.setForeground(new Color(254, 255, 255));
-		btnPlay.setBackground(Color.GREEN);
+		btnPlay.setBackground(new Color(0, 143, 81));
         btnPlay.setFont(new Font("Lucida Grande", Font.PLAIN, 23));
         btnPlay.setBounds(307, 465, 183, 80);
         btnPlay.addActionListener(new ActionListener() {
@@ -172,5 +172,10 @@ public class main {
             }
         });
         contentPane.add(btnPlay);
+        
+        JSeparator separator = new JSeparator();
+        separator.setForeground(new Color(0, 142, 0));
+        separator.setBounds(6, 254, 788, 30);
+        contentPane.add(separator);
 		}
 	}
