@@ -127,12 +127,16 @@ public class main {
         btnShort.setBounds(178, 353, 183, 80);
         btnShort.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	if (buttonSelect2 != null)
-		            buttonSelect2.setBackground(null);
-		        btnShort.setBackground(Color.GRAY);
-		        buttonSelect2 = btnShort;
-                word = wg.newWord(selected, 0);
-                playFrame.updateWordLabel(word);
+                if (buttonSelect != null) {
+                	if (buttonSelect2 != null)
+    		            buttonSelect2.setBackground(null);
+    		        btnShort.setBackground(Color.GRAY);
+    		        buttonSelect2 = btnShort;
+                    word = wg.newWord(selected, 0);
+                    playFrame.updateWordLabel(word);
+            	} else {
+            		JOptionPane.showMessageDialog(frame, "Please select a theme first.");
+            	}
             }
         });
         contentPane.add(btnShort);
@@ -142,12 +146,16 @@ public class main {
         btnLong.setBounds(445, 353, 183, 80);
         btnLong.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	if (buttonSelect2 != null)
-		            buttonSelect2.setBackground(null);
-		        btnLong.setBackground(Color.GRAY);
-		        buttonSelect2 = btnLong;
-            	word = wg.newWord(selected, 1);
-            	playFrame.updateWordLabel(word);
+            	if (buttonSelect != null) {
+            		if (buttonSelect2 != null)
+    		            buttonSelect2.setBackground(null);
+    		        btnLong.setBackground(Color.GRAY);
+    		        buttonSelect2 = btnLong;
+                	word = wg.newWord(selected, 1);
+                	playFrame.updateWordLabel(word);
+            	} else {
+            		JOptionPane.showMessageDialog(frame, "Please select a theme first.");
+            	}
             }
         });
         contentPane.add(btnLong);
