@@ -51,6 +51,7 @@ public class main {
 	 * Create the frame.
 	 */
 	private void initialize() {
+		// DEFAULT FRAME
 		frame = new JFrame();
 		frame.setTitle("Hangman");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,15 +61,6 @@ public class main {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
 		playClass playFrame = new playClass();
-		
-		/* Initialize array
-		wordMap.put("bibleShort", new String[] {"word1","word2","word5"});
-		wordMap.put("bibleLong", new String[] {"word1","word2","word5"});
-		wordMap.put("foodShort", new String[] {"word1","word2","word5"});
-		wordMap.put("foodLong", new String[] {"word1","word2","word5"});
-		wordMap.put("sportShort", new String[] {"word1","word2","word5"});
-		wordMap.put("sportLong", new String[] {"word1","word2","word5"});
-		*/
 		
 		JButton btnBible = new JButton("Bible");
 		btnBible.setFont(new Font("Lucida Grande", Font.PLAIN, 23));
@@ -85,6 +77,7 @@ public class main {
 		contentPane.setLayout(null);
 		frame.getContentPane().add(btnBible);
 		
+		// TITLE
 		JLabel theme = new JLabel("Choose Theme");
 		theme.setHorizontalAlignment(SwingConstants.CENTER);
 		theme.setBounds(245, 38, 302, 94);
@@ -92,6 +85,15 @@ public class main {
 		theme.setForeground(new Color(78, 143, 0));
 		theme.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 36));
 		
+		JLabel word_legnth = new JLabel("Choose Length of Word");
+		word_legnth.setHorizontalAlignment(SwingConstants.CENTER);
+		word_legnth.setForeground(new Color(0, 142, 0));
+		word_legnth.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 27));
+		word_legnth.setBounds(208, 254, 370, 94);
+		contentPane.add(word_legnth);
+		
+		
+		// BUTTONS
 		JButton btnFood = new JButton("Food");
 		btnFood.setFont(new Font("Lucida Grande", Font.PLAIN, 23));
 		btnFood.setBounds(307, 162, 183, 80);
@@ -119,13 +121,6 @@ public class main {
 				selected = WordGenerator.themes.SPORTS;
 			}
 		});
-		
-		JLabel word_legnth = new JLabel("Choose Length of Word");
-		word_legnth.setHorizontalAlignment(SwingConstants.CENTER);
-		word_legnth.setForeground(new Color(0, 142, 0));
-		word_legnth.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 27));
-		word_legnth.setBounds(208, 254, 370, 94);
-		contentPane.add(word_legnth);
 		
 		JButton btnShort = new JButton("Short");
         btnShort.setFont(new Font("Lucida Grande", Font.PLAIN, 23));
@@ -173,6 +168,8 @@ public class main {
         });
         contentPane.add(btnPlay);
         
+        
+        // MISC
         JSeparator separator = new JSeparator();
         separator.setForeground(new Color(0, 142, 0));
         separator.setBounds(6, 254, 788, 30);

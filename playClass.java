@@ -76,9 +76,12 @@ public class playClass extends JFrame {
 	public void updateWordLabel(String word) {
 		wordLabel.setText(word);
 		int limit = word.length();
+		for (KeyListener remove : textGuess.getKeyListeners()) {
+	        textGuess.removeKeyListener(remove);
+	    }
 		textGuess.addKeyListener(new KeyAdapter() {
 		    public void keyTyped(KeyEvent e) { 
-		        if (textGuess.getText().length() >= limit ) // limit text field to 3 characters
+		        if (textGuess.getText().length() >= limit)
 		            e.consume(); 
 		    }  
 		});
