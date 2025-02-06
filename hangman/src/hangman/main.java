@@ -1,6 +1,7 @@
 package hangman;
 
 import java.awt.*;
+import javax.swing.UIManager.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.event.*;
@@ -21,6 +22,17 @@ public class main {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
+				try {
+				    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+				        if ("Nimbus".equals(info.getName())) {
+				            UIManager.setLookAndFeel(info.getClassName());
+				            break;
+				        }
+				    }
+				} catch (Exception e) {
+				    // If Nimbus is not available, you can set the GUI to another look and feel.
+				}
+				
 				try {
 					main window = new main();
 					window.frame.setVisible(true);
@@ -87,16 +99,16 @@ public class main {
 		btnSports.setBounds(565, 162, 183, 80);
 		contentPane.add(btnSports);
 		
-		JLabel word_legnth = new JLabel("Choose Length of Words");
+		JLabel word_legnth = new JLabel("Choose Length of Word");
 		word_legnth.setHorizontalAlignment(SwingConstants.CENTER);
 		word_legnth.setForeground(new Color(4, 50, 255));
 		word_legnth.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 27));
-		word_legnth.setBounds(49, 267, 370, 94);
+		word_legnth.setBounds(208, 254, 370, 94);
 		contentPane.add(word_legnth);
 		
 		JButton btnShort = new JButton("Short");
         btnShort.setFont(new Font("Lucida Grande", Font.PLAIN, 23));
-        btnShort.setBounds(49, 372, 183, 80);
+        btnShort.setBounds(124, 353, 183, 80);
         btnShort.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 setSelectedWordLength("Short");
@@ -106,7 +118,7 @@ public class main {
         
         JButton btnLong = new JButton("Long");
         btnLong.setFont(new Font("Lucida Grande", Font.PLAIN, 23));
-        btnLong.setBounds(292, 373, 183, 80);
+        btnLong.setBounds(437, 353, 183, 80);
         btnLong.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 setSelectedWordLength("Long");
@@ -115,8 +127,10 @@ public class main {
         contentPane.add(btnLong);
 		
 		JButton btnPlay = new JButton("Play");
+		btnPlay.setForeground(new Color(254, 255, 255));
+		btnPlay.setBackground(Color.GREEN);
         btnPlay.setFont(new Font("Lucida Grande", Font.PLAIN, 23));
-        btnPlay.setBounds(565, 372, 183, 80);
+        btnPlay.setBounds(307, 465, 183, 80);
         btnPlay.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (array != null && array.length > 0) {
