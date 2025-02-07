@@ -141,9 +141,6 @@ public class playClass extends JFrame {
 		    }  
 		});
 		spaces = new JLabel[limit];
-		for (KeyListener remove : textGuess.getKeyListeners()) {
-	        textGuess.removeKeyListener(remove);
-	    }
 		for(int i = 0; i < limit; i ++) {
 			spaces[i] = new JLabel("____");
 		    spaces[i].setFont(new Font("Lucida Grande", Font.PLAIN, 17));
@@ -169,8 +166,8 @@ public class playClass extends JFrame {
 	                }
 	            }
 	        }
-			
-			if (textGuess.getText().equalsIgnoreCase(theWord) || lettersLeft == 0) {
+			boolean correct = textGuess.getText().equalsIgnoreCase(theWord);
+			if (correct || lettersLeft == 0) {
 				JOptionPane.showMessageDialog(btnCheck, "Correct: The word was " + theWord);
 			}
 			else {
@@ -178,7 +175,7 @@ public class playClass extends JFrame {
 					// Change the button color to red
 		            textGuess.setBackground(new Color(255, 38, 0));
 		            
-		            // Create a Timer to change the color back after 500 milliseconds
+		            // Create a Timer to change the color back after 360 milliseconds
 		            Timer timer = new Timer(360, new ActionListener() {
 		                @Override
 		                public void actionPerformed(ActionEvent evt) {
