@@ -9,6 +9,7 @@ import java.awt.event.*;
 public class main {
 	
 	private JFrame frame;
+	private JLabel theme, word_length;
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
     WordGenerator wg = new WordGenerator();
@@ -17,7 +18,7 @@ public class main {
     private JButton buttonSelect = null, btnShort, btnLong, buttonSelect2;
     private boolean buttonSelect3 = false;
 
-	/**
+	/*
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
@@ -67,19 +68,22 @@ public class main {
 		playClass playFrame = new playClass();
 		
 		// TITLE
-		JLabel theme = new JLabel("Choose Theme");
+		theme = new JLabel("Choose Theme");
 		theme.setHorizontalAlignment(SwingConstants.CENTER);
 		theme.setBounds(245, 38, 302, 94);
 		contentPane.add(theme);
 		theme.setForeground(new Color(78, 143, 0));
 		theme.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 36));
 		
-		JLabel word_legnth = new JLabel("Choose Length of Word");
-		word_legnth.setHorizontalAlignment(SwingConstants.CENTER);
-		word_legnth.setForeground(new Color(0, 142, 0));
-		word_legnth.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 27));
-		word_legnth.setBounds(208, 254, 370, 94);
-		contentPane.add(word_legnth);
+		word_length = new JLabel("Choose Length of Word");
+		word_length.setVisible(false);
+		if(buttonSelect3 == true)
+        	word_length.setVisible(true);
+		word_length.setHorizontalAlignment(SwingConstants.CENTER);
+		word_length.setForeground(new Color(0, 142, 0));
+		word_length.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 27));
+		word_length.setBounds(208, 254, 370, 94);
+		contentPane.add(word_length);
 		
 		
 		// BUTTONS
@@ -207,5 +211,6 @@ public class main {
 	private void updateVisibility() {
         btnShort.setVisible(buttonSelect3);
         btnLong.setVisible(buttonSelect3);
+        word_length.setVisible(buttonSelect3);
     }
 }
