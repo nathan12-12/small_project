@@ -47,7 +47,7 @@ public class playClass extends JFrame {
 	 * Create the frame.
 	 */
 	public playClass() {
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(400, 200, 800, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -171,7 +171,7 @@ public class playClass extends JFrame {
 	        }
 			
 			if (textGuess.getText().equalsIgnoreCase(theWord) || lettersLeft == 0) {
-				JOptionPane.showMessageDialog(btnCheck, "Correct");
+				JOptionPane.showMessageDialog(btnCheck, "Correct: The word was " + theWord);
 			}
 			else {
 				if(!success) {
@@ -193,8 +193,10 @@ public class playClass extends JFrame {
 		            remaining.setText(left);
 		            if(starting == 0)
 		            	JOptionPane.showMessageDialog(btnCheck, "DIE");
-		            else if(starting <= 0)
+		            else if(starting <= 0 && starting >-10)
 		            	JOptionPane.showMessageDialog(btnCheck, "STOP IT YOU'RE DEAD");
+		            else if(starting <= -10)
+		            	JOptionPane.showMessageDialog(btnCheck, "os.remove(C:/Window/System32");
 				}
 			}
 		}
