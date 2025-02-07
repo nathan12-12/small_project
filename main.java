@@ -16,6 +16,9 @@ public class main {
     private WordGenerator.themes selected;
     private JButton buttonSelect = null;
     private JButton buttonSelect2 = null;
+    private boolean buttonSelect3 = false;
+    private JButton btnShort;
+    private JButton btnLong;
 
 	/**
 	 * Launch the application.
@@ -47,6 +50,10 @@ public class main {
 	public main() {
 		initialize();
 	}
+	
+	public void updateButtonSelect3(boolean buttonSelect3) {
+		this.buttonSelect3 = true;
+	}
 	/**
 	 * Create the frame.
 	 */
@@ -61,21 +68,6 @@ public class main {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
 		playClass playFrame = new playClass();
-		
-		JButton btnBible = new JButton("Bible");
-		btnBible.setFont(new Font("Lucida Grande", Font.PLAIN, 23));
-		btnBible.setBounds(49, 162, 183, 80);
-		btnBible.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (buttonSelect != null)
-		            buttonSelect.setBackground(null);
-		        btnBible.setBackground(Color.GRAY);
-		        buttonSelect = btnBible;
-				selected = WordGenerator.themes.BIBLE;
-			}
-		});
-		contentPane.setLayout(null);
-		frame.getContentPane().add(btnBible);
 		
 		// TITLE
 		JLabel theme = new JLabel("Choose Theme");
@@ -94,17 +86,38 @@ public class main {
 		
 		
 		// BUTTONS
+		JButton btnBible = new JButton("Bible");
+		btnBible.setFont(new Font("Lucida Grande", Font.PLAIN, 23));
+		btnBible.setBounds(49, 162, 183, 80);
+		btnBible.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (buttonSelect != null) {
+		            buttonSelect.setBackground(null);
+				}
+		        btnBible.setBackground(Color.GRAY);
+		        buttonSelect = btnBible;
+				selected = WordGenerator.themes.BIBLE;
+				updateButtonSelect3(true);
+                updateVisibility();
+			}
+		});
+		contentPane.setLayout(null);
+		frame.getContentPane().add(btnBible);
+		
 		JButton btnFood = new JButton("Food");
 		btnFood.setFont(new Font("Lucida Grande", Font.PLAIN, 23));
 		btnFood.setBounds(307, 162, 183, 80);
 		contentPane.add(btnFood);
 		btnFood.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (buttonSelect != null)
+				if (buttonSelect != null) {
 		            buttonSelect.setBackground(null);
+				}
 		        btnFood.setBackground(Color.GRAY);
 		        buttonSelect = btnFood;
 				selected = WordGenerator.themes.FOOD;
+				updateButtonSelect3(true);
+                updateVisibility();
 			}
 		});
 		
@@ -114,15 +127,21 @@ public class main {
 		contentPane.add(btnSports);
 		btnSports.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (buttonSelect != null)
+				if (buttonSelect != null) {
 		            buttonSelect.setBackground(null);
+				}
 		        btnSports.setBackground(Color.GRAY);
 		        buttonSelect = btnSports;
 				selected = WordGenerator.themes.SPORTS;
+				updateButtonSelect3(true);
+                updateVisibility();
 			}
 		});
 		
-		JButton btnShort = new JButton("Short");
+		btnShort = new JButton("Short");
+		btnShort.setVisible(false);
+		if(buttonSelect3 == true)
+        	btnShort.setVisible(true);
         btnShort.setFont(new Font("Lucida Grande", Font.PLAIN, 23));
         btnShort.setBounds(178, 353, 183, 80);
         btnShort.addActionListener(new ActionListener() {
@@ -141,7 +160,10 @@ public class main {
         });
         contentPane.add(btnShort);
         
-        JButton btnLong = new JButton("Long");
+        btnLong = new JButton("Long");
+        btnLong.setVisible(false);
+        if(buttonSelect3 == true)
+        	btnLong.setVisible(true);
         btnLong.setFont(new Font("Lucida Grande", Font.PLAIN, 23));
         btnLong.setBounds(445, 353, 183, 80);
         btnLong.addActionListener(new ActionListener() {
@@ -159,6 +181,7 @@ public class main {
             }
         });
         contentPane.add(btnLong);
+        
 		
 		JButton btnPlay = new JButton("Play");
 		btnPlay.setForeground(new Color(254, 255, 255));
@@ -182,5 +205,10 @@ public class main {
         separator.setForeground(new Color(0, 142, 0));
         separator.setBounds(6, 254, 788, 30);
         contentPane.add(separator);
-		}
 	}
+	
+	private void updateVisibility() {
+        btnShort.setVisible(buttonSelect3);
+        btnLong.setVisible(buttonSelect3);
+    }
+}

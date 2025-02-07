@@ -5,12 +5,12 @@ public class WordGenerator {
 	
 	public enum themes {BIBLE, FOOD, SPORTS};
 	 
-	static final String bibleSm [] = {"lamb","adam","eve","eden", "god","john","fig","dove","son","faith"};
+	static final String bibleSm [] = {"lamb","adam","eve","eden", "god","john","fig","dove","jesus","faith"};
 	static final String bibleBg [] = {"cherubim", "tabernacle", "atonement", "temple", "revelation", "baptism", "genesis", "redemption", "hallelujah", "worship"};
-	static final String foodSm []= {"egg", "rice", "bean", "pear", "kiwi", "salt", "plum", "corn", "milk", "beef"};
-	static final String foodBg []={"broccoli", "pineapple", "blueberry", "spaghetti", "avocado", "cucumber", "asparagus", "mushroom", "lasagna", "eggplant"};
-	static final String sportsSm []={"golf", "surf", "judo", "yoga", "crew", "dive", "race", "ski", "pong", "dart"};
-	static final String sportsBg []={"baseball", "football", "cricket", "hockey", "gymnastics", "badminton", "swimming", "volleyball", "wrestling", "basketball"};
+	static final String foodSm [] = {"egg", "rice", "bean", "pear", "kiwi", "salt", "plum", "corn", "milk", "beef"};
+	static final String foodBg [] = {"broccoli", "pineapple", "blueberry", "spaghetti", "avocado", "cucumber", "asparagus", "mushroom", "lasagna", "eggplant"};
+	static final String sportsSm [] = {"golf", "surf", "judo", "yoga", "crew", "dive", "race", "ski", "pong", "dart"};
+	static final String sportsBg [] = {"baseball", "football", "cricket", "hockey", "gymnastics", "badminton", "swimming", "volleyball", "wrestling", "basketball"};
 	static String newWord(themes theme, int length) {
 		//length: 0=short 1=long
 		Random rand = new Random();
