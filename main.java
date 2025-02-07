@@ -11,14 +11,11 @@ public class main {
 	private JFrame frame;
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-    WordGenerator wg= new WordGenerator();
+    WordGenerator wg = new WordGenerator();
     private String word;
     private WordGenerator.themes selected;
-    private JButton buttonSelect = null;
-    private JButton buttonSelect2 = null;
+    private JButton buttonSelect = null, btnShort, btnLong, buttonSelect2;
     private boolean buttonSelect3 = false;
-    private JButton btnShort;
-    private JButton btnLong;
 
 	/**
 	 * Launch the application.

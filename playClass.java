@@ -31,7 +31,7 @@ public class playClass extends JFrame {
 				    }
 				} catch (Exception e) {
 				    // If Nimbus is not available, you can set the GUI to another look and feel.
-					// If Windows might not needt this
+					// If Windows might not need this
 				}
 				try {
 					playClass frame = new playClass();
@@ -78,25 +78,6 @@ public class playClass extends JFrame {
         remaining.setBounds(426, 351, 58, 33);
         contentPane.add(remaining);
         
-        textGuess = new JTextField();
-        textGuess.setHorizontalAlignment(SwingConstants.CENTER);
-        textGuess.setFont(new Font("Lucida Grande", Font.PLAIN, 19));
-        textGuess.setBounds(320, 271, 197, 68);
-        contentPane.add(textGuess);
-        textGuess.setColumns(10);
-        
-        btnCheck = new JButton("Check");
-		btnCheck.setForeground(new Color(254, 255, 255));
-		btnCheck.setBackground(new Color(0, 143, 81));
-        btnCheck.setFont(new Font("Lucida Grande", Font.PLAIN, 23));
-        btnCheck.setBounds(320, 391, 197, 94);
-        btnCheck.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            	check();
-            }
-        });
-        contentPane.add(btnCheck);
-        
         emptySpaces = new JLabel("Empty");
         emptySpaces.setHorizontalAlignment(SwingConstants.CENTER);
         emptySpaces.setFont(new Font("Lucida Grande", Font.PLAIN, 23));
@@ -120,6 +101,29 @@ public class playClass extends JFrame {
         remains.setFont(new Font("Lucida Grande", Font.PLAIN, 23));
         remains.setBounds(555, 419, 180, 33);
         contentPane.add(remains);
+        
+        
+        // Answer Box
+        textGuess = new JTextField();
+        textGuess.setHorizontalAlignment(SwingConstants.CENTER);
+        textGuess.setFont(new Font("Lucida Grande", Font.PLAIN, 19));
+        textGuess.setBounds(320, 271, 197, 68);
+        contentPane.add(textGuess);
+        textGuess.setColumns(10);
+        
+        // Button
+        btnCheck = new JButton("Check");
+		btnCheck.setForeground(new Color(254, 255, 255));
+		btnCheck.setBackground(new Color(0, 143, 81));
+        btnCheck.setFont(new Font("Lucida Grande", Font.PLAIN, 23));
+        btnCheck.setBounds(320, 391, 197, 94);
+        btnCheck.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	check();
+            }
+        });
+        contentPane.add(btnCheck);
+        
 	}
 	
 	// Method to update the word label and set the limit characters for the text field
