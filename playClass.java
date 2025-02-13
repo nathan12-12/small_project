@@ -11,7 +11,7 @@ public class playClass extends JFrame {
 	private main mainMenu;
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane, guessWordPanel;
-	private JLabel wordLabel, lifes, remaining, title, emptySpaces, howManyLeft, total, remains, enter_word;
+	private JLabel wordLabel, lifes, remaining, title, emptySpaces, howManyLeft, total, remains, enter_word, picture2;
 	private JLabel spaces[];
 	private JTextField charGuess;
 	private JButton btnCheck;
@@ -222,6 +222,13 @@ public class playClass extends JFrame {
         enter_letter.setBounds(220, 269, 152, 68);
         contentPane.add(enter_letter);
         
+        /*picture2 = new JLabel();
+        ImageIcon icon = new ImageIcon(this.getClass().getResource("/res/gallow.png"));
+        Image image = icon.getImage().getScaledInstance(208, 208, Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon = new ImageIcon(image);
+        picture2.setIcon(new ImageIcon(playClass.class.getResource("/res/Screenshot 2025-01-01 at 11.37.17.png")));
+        contentPane.add(picture2);
+        */
 	}
 	
 	// Method to update the word label and set the limit characters for the text field
@@ -335,6 +342,8 @@ public class playClass extends JFrame {
 		if (option == JOptionPane.YES_OPTION) {
 			lettersLeft = theWord.length(); // Reset lettersLeft
         	howManyLeft.setText(String.valueOf(lettersLeft));
+        	livesLeft = 6; // Reset lives
+        	remaining.setText(String.valueOf(livesLeft));
         	pastLetters = new char[0]; // Clear past letters
         	charGuess.setText(""); // Clear the guess field
         	guessWordPanel.setVisible(false);
