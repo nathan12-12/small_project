@@ -7,7 +7,8 @@ import java.awt.*;
 import javax.swing.border.*;
 
 public class playClass extends JFrame {
-
+	
+	private main mainMenu;
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane, guessWordPanel;
 	private JLabel wordLabel, lifes, remaining, title, emptySpaces, howManyLeft, total, remains, enter_word;
@@ -36,12 +37,6 @@ public class playClass extends JFrame {
 				    // If Nimbus is not available, you can set the GUI to another look and feel.
 					// If Windows might not need this
 				}
-				try {
-					playClass frame = new playClass();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
 			}
 		});
 	}
@@ -49,7 +44,8 @@ public class playClass extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public playClass() {
+	public playClass(main mainMenu) {
+		this.mainMenu = mainMenu;
 		timer = new Timer(360, new ActionListener() { // Initialize ONCE
             @Override
             public void actionPerformed(ActionEvent evt) {
@@ -276,7 +272,7 @@ public class playClass extends JFrame {
 	            left = String.valueOf(livesLeft);
 	            remaining.setText(left);
 	            if(livesLeft == 0)
-	            	JOptionPane.showMessageDialog(btnCheck, "DIE");
+	                gameOver();
 	            else if(livesLeft <= 0 && livesLeft >-10)
 	            	JOptionPane.showMessageDialog(btnCheck, "STOP IT YOU'RE DEAD");
 			}
@@ -303,10 +299,10 @@ public class playClass extends JFrame {
 	            --livesLeft;
 	            left = String.valueOf(livesLeft);
 	            remaining.setText(left);
-	            if(livesLeft == 0)
+	            if(livesLeft == 0) {
 	            	JOptionPane.showMessageDialog(btnCheck, "DIE");
-	            else if(livesLeft <= 0)
-	            	JOptionPane.showMessageDialog(btnCheck, "STOP IT YOU'RE DEAD");
+	            	gameOver();
+	            }
 				
 			}
 			// Create a Timer to change the color back after 360 milliseconds
@@ -333,4 +329,25 @@ public class playClass extends JFrame {
 		newarr[n] = l;
 		return newarr;
 	}
-}
+	private void gameOver() {
+		int option = JOptionPane.showConfirmDialog(btnCheck, "You ran out of lives! The word was " + theWord +
+				". Do you want to play again?", "Game Over", JOptionPane.YES_NO_OPTION);
+		if (option == JOptionPane.YES_OPTION) {
+			lettersLeft = theWord.length(); // Reset lettersLeft
+        	howManyLeft.setText(String.valueOf(lettersLeft));
+        	pastLetters = new char[0]; // Clear past letters
+        	charGuess.setText(""); // Clear the guess field
+        	guessWordPanel.setVisible(false);
+        	guessedWord.setText("");	        for (int i = 0; i < spaces.length; i++) {
+	             contentPane.remove(spaces[i]); //Remove the old JLabels from contentPane
+	        }
+	        spaces = null;
+	        revalidate(); // Refresh the contentPane
+	        repaint();
+	        mainMenu.showMainMenu();
+	        this.setVisible(false);
+		}
+	    else
+	    	System.exit(0);
+		}
+	}

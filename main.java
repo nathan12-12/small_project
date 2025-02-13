@@ -17,6 +17,7 @@ public class main {
     private WordGenerator.themes selected;
     private JButton buttonSelect = null, btnShort, btnLong, buttonSelect2;
     private boolean buttonSelect3 = false;
+    private playClass playFrame;
 
 	/*
 	 * Launch the application.
@@ -56,6 +57,8 @@ public class main {
 	 * Create the frame.
 	 */
 	private void initialize() {
+		playClass playFrame = new playClass(this);
+		playFrame.setVisible(false);
 		// DEFAULT FRAME
 		frame = new JFrame();
 		frame.setTitle("Hangman");
@@ -65,7 +68,7 @@ public class main {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
-		playClass playFrame = new playClass();
+		playFrame.setVisible(false);
 		
 		// TITLE
 		theme = new JLabel("Choose Theme");
@@ -151,6 +154,7 @@ public class main {
             public void actionPerformed(ActionEvent e) {
             	if (buttonSelect != null && buttonSelect2 != null) {
             		playFrame.setVisible(true);
+                    frame.setVisible(false);
             	} else {
             		JOptionPane.showMessageDialog(frame, "Please select a theme and word length before playing.");
             	}
@@ -221,5 +225,7 @@ public class main {
         btnLong.setVisible(buttonSelect3);
         word_length.setVisible(buttonSelect3);
     }
-	
+	public void showMainMenu() {
+        frame.setVisible(true);
+    }
 }
