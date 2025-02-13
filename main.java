@@ -33,7 +33,7 @@ public class main {
 				    }
 				} catch (Exception e) {
 				    // If Nimbus is not available, you can set the GUI to another look and feel.
-					// If Windows might not needt this
+					// If Windows might not need this
 				}
 				
 				try {
@@ -139,7 +139,28 @@ public class main {
 			}
 		});
 		
-		btnShort = new JButton("Short");
+		
+        
+		
+		JButton btnPlay = new JButton("Play");
+		btnPlay.setForeground(new Color(254, 255, 255));
+		btnPlay.setBackground(new Color(0, 143, 81));
+        btnPlay.setFont(new Font("Lucida Grande", Font.PLAIN, 23));
+        btnPlay.setBounds(307, 465, 183, 80);
+        btnPlay.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	if (buttonSelect != null && buttonSelect2 != null) {
+            		playFrame.setVisible(true);
+            	} else {
+            		JOptionPane.showMessageDialog(frame, "Please select a theme and word length before playing.");
+            	}
+            }
+        });
+        btnPlay.setVisible(false);
+        contentPane.add(btnPlay);
+        
+        
+        btnShort = new JButton("Short");
 		btnShort.setVisible(false);
 		if(buttonSelect3 == true)
         	btnShort.setVisible(true);
@@ -150,10 +171,12 @@ public class main {
                 if (buttonSelect != null) {
                 	if (buttonSelect2 != null)
     		            buttonSelect2.setBackground(null);
+                	
     		        btnShort.setBackground(Color.GRAY);
     		        buttonSelect2 = btnShort;
                     word = wg.newWord(selected, 0);
                     playFrame.updateWordLabel(word);
+                    btnPlay.setVisible(true);
             	} else {
             		JOptionPane.showMessageDialog(frame, "Please select a theme first.");
             	}
@@ -176,6 +199,7 @@ public class main {
     		        buttonSelect2 = btnLong;
                 	word = wg.newWord(selected, 1);
                 	playFrame.updateWordLabel(word);
+                    btnPlay.setVisible(true);
             	} else {
             		JOptionPane.showMessageDialog(frame, "Please select a theme first.");
             	}
@@ -183,29 +207,13 @@ public class main {
         });
         contentPane.add(btnLong);
         
-		
-		JButton btnPlay = new JButton("Play");
-		btnPlay.setForeground(new Color(254, 255, 255));
-		btnPlay.setBackground(new Color(0, 143, 81));
-        btnPlay.setFont(new Font("Lucida Grande", Font.PLAIN, 23));
-        btnPlay.setBounds(307, 465, 183, 80);
-        btnPlay.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            	if (buttonSelect != null && buttonSelect2 != null) {
-            		playFrame.setVisible(true);
-            	} else {
-            		JOptionPane.showMessageDialog(frame, "Please select a theme and word length before playing.");
-            	}
-            }
-        });
-        contentPane.add(btnPlay);
-        
         
         // MISC
         JSeparator separator = new JSeparator();
         separator.setForeground(new Color(0, 142, 0));
         separator.setBounds(6, 254, 788, 30);
         contentPane.add(separator);
+        
 	}
 	
 	private void updateVisibility() {
@@ -213,4 +221,5 @@ public class main {
         btnLong.setVisible(buttonSelect3);
         word_length.setVisible(buttonSelect3);
     }
+	
 }
