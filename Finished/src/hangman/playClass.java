@@ -75,12 +75,11 @@ public class playClass extends JFrame {
 		guessWordPanel.setBounds(258, 459, 644, 238);
 		contentPane.add(guessWordPanel);
 		
-		
 		//button for entering word
-		JButton btnNewButton = new JButton("Enter");
-		btnNewButton.setFont(new Font("Dialog", Font.PLAIN, 23));
-		btnNewButton.setBounds(215, 168, 186, 62);
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnEnter = new JButton("Enter");
+		btnEnter.setFont(new Font("Dialog", Font.PLAIN, 23));
+		btnEnter.setBounds(215, 168, 186, 62);
+		btnEnter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String guess = guessedWord.getText();
 				if (guess.length()==theWord.length()){
@@ -102,7 +101,7 @@ public class playClass extends JFrame {
 		enter_word.setHorizontalAlignment(SwingConstants.CENTER);
 		enter_word.setBounds(215, 24, 186, 60);
 		guessWordPanel.add(enter_word);
-		guessWordPanel.add(btnNewButton);
+		guessWordPanel.add(btnEnter);
 		
 		guessedWord = new JTextField();
 		guessedWord.setFont(new Font("Dialog", Font.PLAIN, 23));
@@ -124,7 +123,7 @@ public class playClass extends JFrame {
 		title = new JLabel("Title Card");
 		title.setFont(new Font("Lucida Grande", Font.PLAIN, 27));
 		title.setHorizontalAlignment(SwingConstants.CENTER);
-		title.setBounds(282, 42, 257, 33);
+		title.setBounds(282, 42, 300, 33);
 		contentPane.add(title);
 		
 		wordLabel = new JLabel("Guess the word");

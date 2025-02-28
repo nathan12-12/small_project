@@ -13,9 +13,9 @@ public class main {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
     WordGenerator wg = new WordGenerator();
-    private String word, themes;
+    private String word, themes, newTheme;
     private WordGenerator.themes selected;
-    private JButton buttonSelect = null, btnShort, btnLong, buttonSelect2;
+    private JButton buttonSelect = null, btnShort, btnLong, buttonSelect2, btnPlay;
     private boolean buttonSelect3 = false;
     private playClass playFrame;
     private int length;
@@ -104,13 +104,17 @@ public class main {
 		btnBible.setBounds(49, 162, 183, 80);
 		btnBible.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				themes = "Bible";
+				themes = "BIBLE";
+				updateTheme(themes);
 				if (buttonSelect != null) {
 		            buttonSelect.setBackground(null);
 				}
 		        btnBible.setBackground(Color.GRAY);
 		        buttonSelect = btnBible;
-				selected = WordGenerator.themes.BIBLE;
+		        if (buttonSelect2 != null) {
+		            word = wg.newWord(selected, length);
+		            playFrame.updateWordLabel(word, themes);
+		        }
 				updateButtonSelect3(true);
                 updateVisibility();
 			}
@@ -124,13 +128,17 @@ public class main {
 		contentPane.add(btnFood);
 		btnFood.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				themes = "Food";
+				themes = "FOOD";
+				updateTheme(themes);
 				if (buttonSelect != null) {
 		            buttonSelect.setBackground(null);
 				}
 		        btnFood.setBackground(Color.GRAY);
 		        buttonSelect = btnFood;
-				selected = WordGenerator.themes.FOOD;
+		        if (buttonSelect2 != null) {
+		            word = wg.newWord(selected, length);
+		            playFrame.updateWordLabel(word, themes);
+		        }
 				updateButtonSelect3(true);
                 updateVisibility();
 			}
@@ -142,37 +150,21 @@ public class main {
 		contentPane.add(btnSports);
 		btnSports.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				themes = "Sports";
+				themes = "SPORTS";
+				updateTheme(themes);
 				if (buttonSelect != null) {
 		            buttonSelect.setBackground(null);
 				}
 		        btnSports.setBackground(Color.GRAY);
 		        buttonSelect = btnSports;
-				selected = WordGenerator.themes.SPORTS;
+		        if (buttonSelect2 != null) {
+		            word = wg.newWord(selected, length);
+		            playFrame.updateWordLabel(word, themes);
+		        }
 				updateButtonSelect3(true);
                 updateVisibility();
 			}
 		});
-		
-		JButton btnPlay = new JButton("Play");
-		btnPlay.setForeground(new Color(254, 255, 255));
-		btnPlay.setBackground(new Color(0, 143, 81));
-        btnPlay.setFont(new Font("Lucida Grande", Font.PLAIN, 23));
-        btnPlay.setBounds(307, 465, 183, 80);
-        btnPlay.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            	if (buttonSelect != null && buttonSelect2 != null) {
-            		playFrame = new playClass(main.this);
-            		createNewGame(); // Create a new game instance
-            		playFrame.updateWordLabel(word, themes);
-            		word = wg.newWord(selected, length); // Create another random word
-            		playFrame.setVisible(true);
-                    frame.setVisible(false);
-            	}
-            }
-        });
-        btnPlay.setVisible(false);
-        contentPane.add(btnPlay);
         
         
         btnShort = new JButton("Short");
@@ -220,6 +212,26 @@ public class main {
         });
         contentPane.add(btnLong);
         
+        btnPlay = new JButton("Play");
+		btnPlay.setForeground(new Color(254, 255, 255));
+		btnPlay.setBackground(new Color(0, 143, 81));
+        btnPlay.setFont(new Font("Lucida Grande", Font.PLAIN, 23));
+        btnPlay.setBounds(307, 465, 183, 80);
+        btnPlay.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	if (buttonSelect != null && buttonSelect2 != null) {
+            		playFrame = new playClass(main.this);
+            		createNewGame(); // Create a new game instance
+            		playFrame.updateWordLabel(word, newTheme);
+            		word = wg.newWord(selected, length); // Create another random word
+            		playFrame.setVisible(true);
+                    frame.setVisible(false);
+            	}
+            }
+        });
+        btnPlay.setVisible(false);
+        contentPane.add(btnPlay);
+        
         
         // MISC
         JSeparator separator = new JSeparator();
@@ -237,4 +249,9 @@ public class main {
 	public void showMainMenu() {
         frame.setVisible(true);
     }
+	
+	private void updateTheme(String themes) {
+		newTheme = themes;
+		selected = WordGenerator.themes.valueOf(newTheme);
+	}
 }
